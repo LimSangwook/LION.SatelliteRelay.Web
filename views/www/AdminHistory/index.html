@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+  <% include ../Share/bootstrap.ejs%>
+  <% include ../Share/top.ejs%>
+  <% include ../Share/tab.ejs%>
+
+  <!--Satellite Information-->
+  <div class="container">
+      <div class="row" >
+          <div class="col-12" style="">
+              <h4><font face="Tahoma" > | Schedule History List</font></h4>
+          </div>
+  	</div>
+  	    <div class="row" style="height=10px;background-color:#cccccc">
+          <div class="col-12">
+          </div>
+      </div>
+  	<br>
+      <div class="row" style="" >
+          <div class="col-1"></div>
+          <div class="col-10" style="">
+              <table class="table table-default table-hover table-sm" >
+                  <thead >
+                      <tr >
+                          <th>Result</th>
+                          <th>ID</th>
+                          <th>Product ID</th>
+                          <th>Start Time</th>
+                          <th>File Names</th>
+                          <th>File Count</th>
+                          <th>Detail</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <% for(var i=0; i<HISTORY.Datas.length; i++) {%>
+                      <tr>
+                          <td id="STATE_<%= i%>"><%= HISTORY.Datas[i].STATE %></td>
+                          <td id="ID_<%= i%>"><%= HISTORY.Datas[i].ID %></td>
+                          <td id="PRODUCT_ID_<%= i%>"><%= HISTORY.Datas[i].PRODUCT_ID %></td>
+                          <td id="START_DATETIME_<%= i%>"><%= HISTORY.Datas[i].START_DATETIME %></td>
+                          <td id="FILENAME_<%= i%>"><%= HISTORY.Datas[i].FILENAME %></td>
+                          <td id="FILE_COUNT_<%= i%>"><%= HISTORY.Datas[i].FILE_COUNT %></td>
+                          <div id="LOG_<%= i%>" style="visibility:hidden;height:0px" type="hidden" name="hide" value="egoing"> <%= HISTORY.Datas[i].LOGS %></div>
+                          <td><button type="button" class="btn btn-light btn-sm" onclick="myFunction(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
+                      </tr>
+                      <% } %>
+                  </tbody>
+              </table>
+  			<b><div style="text-align:center">
+          <% for(var i=0; i< HISTORY.TotalPage;i++) { %>
+            <a href="/AdminHistory/<%= i+1%>"> <%= i+1%> </a>
+            <% } %>
+         </div></b>
+  		<div class="col-1"></div>
+      </div>
+  </div>
+  <script>
+  function myFunction(idx) {
+    $('#Detail_ID').val($('#ID_'+idx).html());
+    $('#Detail_State').val($('#STATE_'+idx).html());
+    $('#Detail_PRODUCT_ID').val($('#PRODUCT_ID_'+idx).html());
+    $('#Detail_START_DATETIME').val($('#START_DATETIME_'+idx).html());
+    $('#Detail_FILE_NAMES').val($('#FILENAME_'+idx).html());
+    $('#Detail_FILE_COUNT').val($('#FILE_COUNT_'+idx).html());
+    $('#Detail_LOG').html($('#LOG_1'+idx).html());
+
+    $('#detailHistoryModal').modal('show');
+  }
+  </script>
+<!-- Modify Satellite Information -->
+  <div class="modal fade" id="detailHistoryModal" role="dialog">
+    <div class="modal-dialog modal-lg" >
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Schedule Histroy Detail</h4>
+        </div>
+        <div class="modal-body">
+                   <form style="align:center">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="exampleInputEmail1">ID </label><br>
+                            <label for="exampleInputEmail1">State </label><br>
+                            <label for="exampleInputEmail1">PRODUCT ID </label><br>
+                            <label for="exampleInputEmail1">START </label><br>
+                            <label for="exampleInputEmail1">FILE NAMEs </label><br>
+                            <label for="exampleInputEmail1">FILE Count </label><br>
+                            <label for="exampleInputEmail1">Log </label>
+                        </div>
+                        <div class="col-10">
+                          <input id="Detail_ID" readonly><br>
+                          <input id="Detail_State" readonly><br>
+                          <input id="Detail_PRODUCT_ID" readonly><br>
+                          <input id="Detail_START_DATETIME" readonly><br>
+                          <input id="Detail_FILE_NAMES" readonly><br>
+                          <input id="Detail_FILE_COUNT" readonly><br>
+                          <textarea readonly style="font-size: 9pt" id="Detail_LOG" class="form-control" id="exampleTextarea" rows="15"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

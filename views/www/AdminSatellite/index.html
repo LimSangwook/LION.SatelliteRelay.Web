@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <% include ../Share/bootstrap.ejs%>
+    <% include ../Share/top.ejs%>
+    <% include ../Share/tab.ejs%>
+
+    <!--Satellite Information-->
+    <div class="container">
+      <div class="row" >
+        <div class="col-8" style="">
+          <h4><font face="Tahoma" > | Satellite Information</font></h4>
+        </div>
+        <div class="col-4" style="text-align:left;">
+          <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#createSatelliteModal"><span class="oi oi-plus"></span> + Create</button>
+        </div>
+      </div>
+      <div class="row" style="height=10px;background-color:#cccccc">
+        <div class="col-12">
+        </div>
+      </div>
+      <br>
+      <div class="row" style="" >
+        <div class="col-4"></div>
+        <div class="col-4" style="">
+          <table class="table table-default table-hover table-sm" >
+            <thead >
+              <tr >
+                <th>ID</th>
+                <th style="text-align:center" >Satellite Name</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<SATELLITE.Datas.length; i++) {%>
+                <tr >
+                  <td id="ID_<%= i%>"><%= SATELLITE.Datas[i].ID %></td>
+                  <td id="NAME_<%= i%>" style="text-align:center"><%= SATELLITE.Datas[i].NAME %></td>
+                  <td><button type="button" class="btn btn-light btn-sm" onclick="callDetail(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
+
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+            <b><div style="text-align:center">
+              <% for(var i=0; i< SATELLITE.TotalPage;i++) { %>
+                <a href="/AdminSatellite/<%= i+1%>"> <%= i+1%> </a>
+                <% } %>
+              </div></b>
+              <div class="col-4"></div>
+            </div>
+          </div>
+          <script>
+          function callDetail(idx) {
+            $('#Detail_ID').val($('#ID_'+idx).html());
+            $('#Detail_NAME').val($('#NAME_'+idx).html());
+            $('#modifySatelliteModal').modal('show');
+          }
+          </script>
+          <% include modal.ejs%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

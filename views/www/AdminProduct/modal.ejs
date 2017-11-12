@@ -1,0 +1,164 @@
+
+<!-- Create Product Information -->
+<div class="modal fade" id="createProductModal" role="dialog">
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">New Product</h4>
+    </div>
+    <form style="align:center" action="http://localhost:4567/product/create" method="post" enctype='multipart/form-data'>
+    <div class="modal-body">
+            <div class="form-group">
+                <div class="row">
+                  <div class="col-5" >
+                      <label>SATELLITE_ID </label><br>
+                      <label>NAME </label><br>
+                      <label>SOURCEPATH </label><br>
+                      <label>TARGETPATH </label><br>
+                      <label>TARGETPATH_TYPE </label><br>
+                      <label>FILTER_TYPE </label><br>
+                      <label>FILTER_SIMPLE </label><br>
+                      <label>FILTER_REGEXP </label><br>
+                      <label>SCHEDULE_TIME </label><br><br>
+
+                      <label>COORD_UL </label><br>
+                      <label>COORD_LR </label><br>
+                      <label>REG_DATE </label><br>
+                      <label>PIXEL_ROW </label><br>
+                      <label>PIXEL_COL </label><br>
+                      <label>DATA_TYPE </label><br>
+                      <label>PROJECTION </label><br>
+                      <label>QUICK_LOOK </label><br>
+                      <label>DATA_GBN </label><br>
+                      <label>DATA_AN_GBN </label><br>
+                      <label>RESOLUTION </label><br>
+                      <label>FILE_STATUS </label><br>
+                      <label>MOUNT_POINT </label><br>
+                      <label>DATA_OPEN </label>
+                  </div>
+                  <div class="col-5">
+                    <input style="height:32px" name="SATELLITE_ID" id="Create_SATELLITE_ID"><br>
+                    <input style="height:32px" name="NAME" id="Create_NAME"><br>
+                    <input style="height:32px" name="SOURCEPATH" id="Create_SOURCEPATH"><br>
+                    <input style="height:32px" name="TARGETPATH" id="Create_TARGETPATH"><br>
+                    <input style="height:32px" name="TARGETPATH_TYPE" id="Create_TARGETPATH_TYPE"><br>
+                    <input style="height:32px" name="FILTER_TYPE" id="Create_FILTER_TYPE"><br>
+                    <input style="height:32px" name="FILTER_SIMPLE" id="Create_FILTER_SIMPLE"><br>
+                    <input style="height:32px" name="FILTER_REGEXP" id="Create_FILTER_REGEXP"><br>
+                    <input style="height:32px" name="SCHEDULE_TIME" id="Create_SCHEDULE_TIME"><br>
+                    <br>
+                    <input style="height:32px" name="COORD_UL" id="Create_COORD_UL"><br>
+                    <input style="height:32px" name="COORD_LR" id="Create_COORD_LR"><br>
+                    <input style="height:32px" name="REG_DATE" id="Create_REG_DATE"><br>
+                    <input style="height:32px" name="PIXEL_ROW" id="Create_PIXEL_ROW"><br>
+                    <input style="height:32px" name="PIXEL_COL" id="Create_PIXEL_COL"><br>
+                    <input style="height:32px" name="DATA_TYPE" id="Create_DATA_TYPE"><br>
+                    <input style="height:32px" name="PROJECTION" id="Create_PROJECTION"><br>
+                    <input style="height:32px" name="QUICK_LOOK" id="Create_QUICK_LOOK"><br>
+                    <input style="height:32px" name="DATA_GBN" id="Create_DATA_GBN"><br>
+                    <input style="height:32px" name="DATA_AN_GBN" id="Create_DATA_AN_GBN"><br>
+                    <input style="height:32px" name="RESOLUTION" id="Create_RESOLUTION"><br>
+                    <input style="height:32px" name="FILE_STATUS" id="Create_FILE_STATUS"><br>
+                    <input style="height:32px" name="MOUNT_POINT" id="Create_MOUNT_POINT"><br>
+                    <input style="height:32px" name="DATA_OPEN" id="Create_DATA_OPEN"><br>
+                  </div>
+                </div>
+
+            </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+      <input type="submit" value="Create">
+    </div>
+  </form>
+  </div>
+</div>
+</div>
+
+<!-- Modify Product Information -->
+<div class="modal fade" id="modifyProductModal" role="dialog">
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Product Information</h4>
+    </div>
+    <form style="align:center" action="http://localhost:4567/product/update" method="post" enctype='multipart/form-data'>
+    <div class="modal-body">
+            <div class="form-group">
+                <div class="row">
+                        <div class="col-1" > </div>
+                    <div class="col-5">
+                        <label>ID </label><br>
+                        <label>SATELLITE_ID </label><br>
+                        <label>NAME </label><br>
+                        <label>SOURCEPATH </label><br>
+                        <label>TARGETPATH </label><br>
+                        <label>TARGETPATH_TYPE </label><br>
+                        <label>FILTER_TYPE </label><br>
+                        <label>FILTER_SIMPLE </label><br>
+                        <label>FILTER_REGEXP </label><br>
+                        <label>SCHEDULE_TIME </label><br><br>
+
+                        <label>COORD_UL </label><br>
+                        <label>COORD_LR </label><br>
+                        <label>REG_DATE </label><br>
+                        <label>PIXEL_ROW </label><br>
+                        <label>PIXEL_COL </label><br>
+                        <label>DATA_TYPE </label><br>
+                        <label>PROJECTION </label><br>
+                        <label>QUICK_LOOK </label><br>
+                        <label>DATA_GBN </label><br>
+                        <label>DATA_AN_GBN </label><br>
+                        <label>RESOLUTION </label><br>
+                        <label>FILE_STATUS </label><br>
+                        <label>MOUNT_POINT </label><br>
+                        <label>DATA_OPEN </label>
+                    </div>
+                    <div class="col-5">
+                      <input style="height:32px" name="ID" id="Detail_ID" readonly><br>
+                      <input style="height:32px" name="SATELLITE_ID" id="Detail_SATELLITE_ID"><br>
+                      <input style="height:32px" name="NAME" id="Detail_NAME"><br>
+                      <input style="height:32px" name="SOURCEPATH" id="Detail_SOURCEPATH"><br>
+                      <input style="height:32px" name="TARGETPATH" id="Detail_TARGETPATH"><br>
+                      <input style="height:32px" name="TARGETPATH_TYPE" id="Detail_TARGETPATH_TYPE"><br>
+                      <input style="height:32px" name="FILTER_TYPE" id="Detail_FILTER_TYPE"><br>
+                      <input style="height:32px" name="FILTER_SIMPLE" id="Detail_FILTER_SIMPLE"><br>
+                      <input style="height:32px" name="FILTER_REGEXP" id="Detail_FILTER_REGEXP"><br>
+                      <input style="height:32px" name="SCHEDULE_TIME" id="Detail_SCHEDULE_TIME"><br>
+                      <br>
+                      <input style="height:32px" name="COORD_UL" id="Detail_COORD_UL"><br>
+                      <input style="height:32px" name="COORD_LR" id="Detail_COORD_LR"><br>
+                      <input style="height:32px" name="REG_DATE" id="Detail_REG_DATE"><br>
+                      <input style="height:32px" name="PIXEL_ROW" id="Detail_PIXEL_ROW"><br>
+                      <input style="height:32px" name="PIXEL_COL" id="Detail_PIXEL_COL"><br>
+                      <input style="height:32px" name="DATA_TYPE" id="Detail_DATA_TYPE"><br>
+                      <input style="height:32px" name="PROJECTION" id="Detail_PROJECTION"><br>
+                      <input style="height:32px" name="QUICK_LOOK" id="Detail_QUICK_LOOK"><br>
+                      <input style="height:32px" name="DATA_GBN" id="Detail_DATA_GBN"><br>
+                      <input style="height:32px" name="DATA_AN_GBN" id="Detail_DATA_AN_GBN"><br>
+                      <input style="height:32px" name="RESOLUTION" id="Detail_RESOLUTION"><br>
+                      <input style="height:32px" name="FILE_STATUS" id="Detail_FILE_STATUS"><br>
+                      <input style="height:32px" name="MOUNT_POINT" id="Detail_MOUNT_POINT"><br>
+                      <input style="height:32px" name="DATA_OPEN" id="Detail_DATA_OPEN"><br>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="modal-footer">
+      <button onclick="deleteProduct()">Delete</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+      <input type="submit" value="Update">
+    </div>
+  </form>
+  </div>
+</div>
+<script>
+function deleteProduct() {
+  var URL = "http://localhost:4567/product/delete/" + $('#Detail_ID').val();
+  window.location=URL;
+}
+</script>

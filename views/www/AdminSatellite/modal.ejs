@@ -1,0 +1,75 @@
+
+<!-- Create Satellite Information -->
+<div class="modal fade" id="createSatelliteModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Satellite</h4>
+      </div>
+      <form style="align:center" action="/satellite/create" method="post" enctype='multipart/form-data'>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-1" > </div>
+              <div class="col-5">
+                <label for="exampleInputEmail1">Satellite Name </label>
+              </div>
+              <div class="col-5">
+                <input type="text" name="SatelliteName" class="form-control" id="Satellite Name" aria-describedby="emailHelp" placeholder="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+          <input type="submit" value="Create">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modify Satellite Information -->
+<div class="modal fade" id="modifySatelliteModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detail Satellite Information</h4>
+      </div>
+      <form style="align:center" action="http://localhost:4567/satellite/update" method="post" enctype='multipart/form-data'>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-1" > </div>
+              <div class="col-5">
+                <label for="exampleInputEmail1">ID </label><br>
+                <label for="exampleInputEmail1">Satellite Name </label>
+              </div>
+              <div class="col-5">
+                <input name="ID" id="Detail_ID" readonly><br>
+                <input name="NAME" id="Detail_NAME">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="deleteSatellite()">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+          <input type="submit" value="Update">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+
+function deleteSatellite() {
+  var URL = "http://localhost:4567/satellite/delete/" + $('#Detail_ID').val();
+  window.location=URL;
+}
+
+</script>
