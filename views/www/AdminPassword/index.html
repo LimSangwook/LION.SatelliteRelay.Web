@@ -10,44 +10,68 @@
   <div class="row" style="">
     <div class="col-2"></div>
     <div class="col-8">
-      <form style="align:center">
+      <form id="modifyForm" name="modifyForm" >
         <br>
         <div class="form-group">
           <div class="row">
-            <div class="col-2"></div>
-            <div class="col-3">
+            <div class="col-4"></div>
+            <div class="col-2">
               <label for="exampleInputEmail1">Now Password</label>
             </div>
-            <div class="col-3">
-              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            <div class="col-2">
+              <input type="password" class="form-control" id="oldPassword" aria-describedby="emailHelp" placeholder="">
             </div>
+            <div class="col-4"></div>
           </div>
         </div>
         <br><br>
         <div class="form-group">
           <div class="row">
-            <div class="col-2"></div>
-            <div class="col-3">
+            <div class="col-4"></div>
+            <div class="col-2">
               <label for="exampleInputEmail1">New Password</label>
             </div>
-            <div class="col-3">
-              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            <div class="col-2">
+              <input type="password" class="form-control" id="newPassword" aria-describedby="emailHelp" placeholder="">
             </div>
+            <div class="col-4"></div>
           </div>
         </div>                <div class="form-group">
           <div class="row">
-            <div class="col-2"></div>
+            <div class="col-4"></div>
 
-            <div class="col-3">
-              <label for="exampleInputEmail1">Confirm Password</label>
+            <div class="col-2">
+              <label for="exampleInputEmail1">Repeat Password</label>
             </div>
-            <div class="col-3">
-              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            <div class="col-2">
+              <input type="password" class="form-control" id="repeatPassword" aria-describedby="emailHelp" placeholder="">
+              <br>
+              <input type="button" value="Change" onclick="modifyFormSubmit()" />
             </div>
+            <div class="col-4"></div>
           </div>
         </div>
-        <button style="display: block;margin-left: auto;margin-right: auto" type="button" class="btn btn-primary " data-toggle="modal" data-target="#changePasswordModal">Change</button>
       </form>
     </div>
+    <script>
+    function modifyFormSubmit() {
+      var oldPassword = $('#oldPassword').val();
+      var newPassword = $('#newPassword').val();
+      var repeatPassword = $('#repeatPassword').val();
+      $.ajax({
+        url: '/changePassword',
+        type: 'post',
+        data: {'oldPassword':oldPassword, 'newPassword':newPassword,'repeatPassword':repeatPassword},
+        enctype:'multipart/form-data',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'html',
+        success: function (result) {
+          alert(result);
+          window.location.reload(true);
+        },
+        error:  function(result) { alert('ERROR : ' + result);}
+      });
+    }
+    </script>
   </body>
   </html>

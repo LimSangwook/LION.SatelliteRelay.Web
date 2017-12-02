@@ -55,7 +55,7 @@
                 <% for(var i=parseInt((SATELLITE.NowPage-1)/10)*10; i< (parseInt((SATELLITE.NowPage-1)/10)+1)*10;i++) { if (i >= SATELLITE.TotalPage) break; %>
                 <a href="/AdminSatellite/<%= i+1%>"> <%= i+1%> </a>
                 <% } %>
-                <% if(parseInt((SATELLITE.NowPage-1) / 10) < parseInt(SATELLITE.TotalPage / 10)) { %>
+                <% if(parseInt((SATELLITE.NowPage-1) / 10) + 1 < parseInt(SATELLITE.TotalPage / 10)) { %>
                     <a href="/AdminSatellite/<%= i+1%>"> [NEXT] </a>
                 <%}%>
               </div></b>

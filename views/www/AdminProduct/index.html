@@ -86,7 +86,7 @@
                   <% for(var i=parseInt((PRODUCT.NowPage-1)/10)*10; i< (parseInt((PRODUCT.NowPage-1)/10)+1)*10;i++) { if (i >= PRODUCT.TotalPage) break; %>
                   <a href="/AdminProduct/<%= i+1%>"> <%= i+1%> </a>
                   <% } %>
-                  <% if(parseInt((PRODUCT.NowPage-1) / 10) < parseInt(PRODUCT.TotalPage / 10)) { %>
+                  <% if(parseInt((PRODUCT.NowPage-1) / 10) + 1 < parseInt(PRODUCT.TotalPage / 10)) { %>
                       <a href="/AdminProduct/<%= i+1%>"> [NEXT] </a>
                   <%}%>
                </div></b>

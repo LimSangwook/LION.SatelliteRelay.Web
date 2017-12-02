@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Setup Admin Password </title>
+</head>
+<body>
+  <% include ../Share/bootstrap.ejs%>
+  <% include ../Share/top.ejs%>
+  <div class="row" style="">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <form id="loginForm" name="loginForm" >
+        <br>
+        <!--Line-->
+        <div class="row" style="height=10px;background-color:#cccccc">
+          <div class="col-12"></div>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4"></div>
+            <div class="col-2">
+              <label for="exampleInputEmail1">Password</label>
+            </div>
+            <div class="col-2">
+              <input type="password" id="inputPassword">
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div>
+        <!--Line-->
+        <div class="row" style="height=10px;background-color:#cccccc">
+          <div class="col-12"></div>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-5"></div>
+            <div class="col-2" >
+              <input type="button" value="Login" onclick="createFormSubmit()" />
+            </div>
+            <div class="col-5"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+
+  var elem = document.getElementById("inputPassword");
+  elem.onkeydown = function(e){
+    if(e.keyCode == 13){
+      createFormSubmit();
+    }
+  }
+
+  function createFormSubmit() {
+    var password = jQuery("#inputPassword").val(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+    $.ajax({
+      url: '/checkLogin/' + password,
+      type: 'GET',
+      enctype:'multipart/form-data',
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      dataType: 'html',
+      success: function (result) { window.location.href = '/';},
+      error:  function(result) { alert('ERROR : ' + result);}
+    });
+  }
+  
+  </script>
+  </html>

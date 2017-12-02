@@ -61,7 +61,7 @@
           <% for(var i=parseInt((HISTORY.NowPage-1)/10)*10; i< (parseInt((HISTORY.NowPage-1)/10)+1)*10;i++) { if (i >= HISTORY.TotalPage) break; %>
           <a href="/AdminHistory/<%= i+1%>"> <%= i+1%> </a>
           <% } %>
-          <% if(parseInt((HISTORY.NowPage-1) / 10) < parseInt(HISTORY.TotalPage / 10)) { %>
+          <% if(parseInt((HISTORY.NowPage-1) / 10)+1 < parseInt(HISTORY.TotalPage / 10)) { %>
               <a href="/AdminHistory/<%= i+1%>"> [NEXT] </a>
           <%}%>
          </div></b>
@@ -69,6 +69,7 @@
       </div>
   </div>
   <script>
+
   function myFunction(idx) {
     $('#Detail_ID').val($('#ID_'+idx).html());
     $('#Detail_State').val($('#STATE_'+idx).html());
@@ -81,6 +82,7 @@
 
     $('#detailHistoryModal').modal('show');
   }
+
   </script>
 <!-- Modify Satellite Information -->
   <div class="modal fade" id="detailHistoryModal" role="dialog">

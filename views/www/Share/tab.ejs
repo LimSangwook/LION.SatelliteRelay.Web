@@ -1,4 +1,12 @@
 <div class="container">
+  <div class="row" >
+  <div class="col-11" align="middle" >  </div>
+    <div class="col-1" align="middle" >
+    <font size="2" > <button onclick="logout()">Logout</button></font>
+  </div>
+</div>
+</div>
+<div class="container">
     <div class="row" >
         <div class="col-12" align="middle" >
         <img src = "images/Tab_Menu.png" height="46" usemap="#planetmap" />
@@ -18,3 +26,8 @@
         </div>
     </div>
 <br>
+<script>
+function logout() {
+  window.location.href = '/logout';
+}
+</script>
