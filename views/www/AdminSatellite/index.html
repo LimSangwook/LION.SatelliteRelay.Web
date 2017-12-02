@@ -12,10 +12,10 @@
     <div class="container">
       <div class="row" >
         <div class="col-8" style="">
-          <h4><font face="Tahoma" > | Satellite Information</font></h4>
+          <font size="4" face="Tahoma" > | Satellite Information</font>
         </div>
-        <div class="col-4" style="text-align:left;">
-          <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#createSatelliteModal"><span class="oi oi-plus"></span> + Create</button>
+        <div class="col-4" style="text-align:right;">
+          <button type="button" data-toggle="modal" data-target="#createSatelliteModal"><font size="2">+Create</font></button>
         </div>
       </div>
       <div class="row" style="height=10px;background-color:#cccccc">
@@ -26,11 +26,13 @@
       <div class="row" style="" >
         <div class="col-4"></div>
         <div class="col-4" style="">
+          <font size="1">
           <table class="table table-default table-hover table-sm" >
             <thead >
               <tr >
                 <th>ID</th>
-                <th style="text-align:center" >Satellite Name</th>
+                <th>Satellite Name</th>
+                <th>Resolution</th>
                 <th>Detail</th>
               </tr>
             </thead>
@@ -38,17 +40,24 @@
               <% for(var i=0; i<SATELLITE.Datas.length; i++) {%>
                 <tr >
                   <td id="ID_<%= i%>"><%= SATELLITE.Datas[i].ID %></td>
-                  <td id="NAME_<%= i%>" style="text-align:center"><%= SATELLITE.Datas[i].NAME %></td>
-                  <td><button type="button" class="btn btn-light btn-sm" onclick="callDetail(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
-
+                  <td><input id="NAME_<%= i%>" readonly value="<%= SATELLITE.Datas[i].NAME %>" /></td>
+                  <td><input id="RESOLUTION_<%= i%>" readonly value="<%= SATELLITE.Datas[i].RESOLUTION %>" /></td>
+                  <td><button type="button" onclick="callDetail(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
                 </tr>
                 <% } %>
               </tbody>
             </table>
+          </font>
             <b><div style="text-align:center">
-              <% for(var i=0; i< SATELLITE.TotalPage;i++) { %>
+                <% if(SATELLITE.NowPage > 10) { %>
+                  <a href="/AdminSatellite/<%= (parseInt(SATELLITE.NowPage/10))*10%>"> [PRE] </a>
+                <%}%>
+                <% for(var i=parseInt((SATELLITE.NowPage-1)/10)*10; i< (parseInt((SATELLITE.NowPage-1)/10)+1)*10;i++) { if (i >= SATELLITE.TotalPage) break; %>
                 <a href="/AdminSatellite/<%= i+1%>"> <%= i+1%> </a>
                 <% } %>
+                <% if(parseInt((SATELLITE.NowPage-1) / 10) < parseInt(SATELLITE.TotalPage / 10)) { %>
+                    <a href="/AdminSatellite/<%= i+1%>"> [NEXT] </a>
+                <%}%>
               </div></b>
               <div class="col-4"></div>
             </div>
@@ -56,7 +65,8 @@
           <script>
           function callDetail(idx) {
             $('#Detail_ID').val($('#ID_'+idx).html());
-            $('#Detail_NAME').val($('#NAME_'+idx).html());
+            $('#Detail_NAME').val($('#NAME_'+idx).val());
+            $('#Detail_RESOLUTION').val($('#RESOLUTION_'+idx).val());
             $('#modifySatelliteModal').modal('show');
           }
           </script>

@@ -12,7 +12,7 @@
   <div class="container">
       <div class="row" >
           <div class="col-12" style="">
-              <h4><font face="Tahoma" > | Schedule History List</font></h4>
+            <font size="4" face="Tahoma" > | Schedule History List</font>
           </div>
   	</div>
   	    <div class="row" style="height=10px;background-color:#cccccc">
@@ -21,41 +21,51 @@
       </div>
   	<br>
       <div class="row" style="" >
-          <div class="col-1"></div>
-          <div class="col-10" style="">
+          <div class="col-2"></div>
+          <div class="col-8" style="">
+            <font size="1">
               <table class="table table-default table-hover table-sm" >
-                  <thead >
-                      <tr >
+                  <thead>
+                      <tr>
+                          <th>No</th>
                           <th>Result</th>
-                          <th>ID</th>
-                          <th>Product ID</th>
+                          <th>P.ID</th>
+                          <th>P.Name</th>
                           <th>Start Time</th>
-                          <th>File Names</th>
                           <th>File Count</th>
+                          <th>File Names</th>
                           <th>Detail</th>
                       </tr>
                   </thead>
                   <tbody>
                     <% for(var i=0; i<HISTORY.Datas.length; i++) {%>
                       <tr>
-                          <td id="STATE_<%= i%>"><%= HISTORY.Datas[i].STATE %></td>
                           <td id="ID_<%= i%>"><%= HISTORY.Datas[i].ID %></td>
+                          <td id="STATE_<%= i%>"><%= HISTORY.Datas[i].STATE %></td>
                           <td id="PRODUCT_ID_<%= i%>"><%= HISTORY.Datas[i].PRODUCT_ID %></td>
+                          <td><input id="PRODUCT_NAME_<%= i%>" readonly value="<%= HISTORY.Datas[i].PRODUCT_NAME %>" /></td>
                           <td id="START_DATETIME_<%= i%>"><%= HISTORY.Datas[i].START_DATETIME %></td>
-                          <td id="FILENAME_<%= i%>"><%= HISTORY.Datas[i].FILENAME %></td>
                           <td id="FILE_COUNT_<%= i%>"><%= HISTORY.Datas[i].FILE_COUNT %></td>
+                          <td><input id="FILENAME_<%= i%>" readonly value="<%= HISTORY.Datas[i].FILENAME %>" /></td>
                           <div id="LOG_<%= i%>" style="visibility:hidden;height:0px" type="hidden" name="hide" value="egoing"> <%= HISTORY.Datas[i].LOGS %></div>
-                          <td><button type="button" class="btn btn-light btn-sm" onclick="myFunction(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
+                          <td><button type="button" onclick="myFunction(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
                       </tr>
                       <% } %>
                   </tbody>
               </table>
+            </font>
   			<b><div style="text-align:center">
-          <% for(var i=0; i< HISTORY.TotalPage;i++) { %>
-            <a href="/AdminHistory/<%= i+1%>"> <%= i+1%> </a>
-            <% } %>
+          <% if(HISTORY.NowPage > 10) { %>
+            <a href="/AdminHistory/<%= (parseInt(HISTORY.NowPage/10))*10%>"> [PRE] </a>
+          <%}%>
+          <% for(var i=parseInt((HISTORY.NowPage-1)/10)*10; i< (parseInt((HISTORY.NowPage-1)/10)+1)*10;i++) { if (i >= HISTORY.TotalPage) break; %>
+          <a href="/AdminHistory/<%= i+1%>"> <%= i+1%> </a>
+          <% } %>
+          <% if(parseInt((HISTORY.NowPage-1) / 10) < parseInt(HISTORY.TotalPage / 10)) { %>
+              <a href="/AdminHistory/<%= i+1%>"> [NEXT] </a>
+          <%}%>
          </div></b>
-  		<div class="col-1"></div>
+  		<div class="col-2"></div>
       </div>
   </div>
   <script>
@@ -63,10 +73,11 @@
     $('#Detail_ID').val($('#ID_'+idx).html());
     $('#Detail_State').val($('#STATE_'+idx).html());
     $('#Detail_PRODUCT_ID').val($('#PRODUCT_ID_'+idx).html());
+    $('#Detail_PRODUCT_NAME').val($('#PRODUCT_NAME_'+idx).val());
     $('#Detail_START_DATETIME').val($('#START_DATETIME_'+idx).html());
-    $('#Detail_FILE_NAMES').val($('#FILENAME_'+idx).html());
+    $('#Detail_FILE_NAMES').val($('#FILENAME_'+idx).val());
     $('#Detail_FILE_COUNT').val($('#FILE_COUNT_'+idx).html());
-    $('#Detail_LOG').html($('#LOG_1'+idx).html());
+    $('#Detail_LOG').html($('#LOG_'+idx).html());
 
     $('#detailHistoryModal').modal('show');
   }
@@ -81,28 +92,56 @@
           <h4 class="modal-title">Schedule Histroy Detail</h4>
         </div>
         <div class="modal-body">
-                   <form style="align:center">
+            <form style="align:center">
                 <div class="form-group">
-                    <div class="row">
-                        <div class="col-2">
-                            <label for="exampleInputEmail1">ID </label><br>
-                            <label for="exampleInputEmail1">State </label><br>
-                            <label for="exampleInputEmail1">PRODUCT ID </label><br>
-                            <label for="exampleInputEmail1">START </label><br>
-                            <label for="exampleInputEmail1">FILE NAMEs </label><br>
-                            <label for="exampleInputEmail1">FILE Count </label><br>
-                            <label for="exampleInputEmail1">Log </label>
-                        </div>
-                        <div class="col-10">
-                          <input id="Detail_ID" readonly><br>
-                          <input id="Detail_State" readonly><br>
-                          <input id="Detail_PRODUCT_ID" readonly><br>
-                          <input id="Detail_START_DATETIME" readonly><br>
-                          <input id="Detail_FILE_NAMES" readonly><br>
-                          <input id="Detail_FILE_COUNT" readonly><br>
-                          <textarea readonly style="font-size: 9pt" id="Detail_LOG" class="form-control" id="exampleTextarea" rows="15"></textarea>
-                        </div>
-                    </div>
+                  <font size="1">
+                    <table class="table table-sm" >
+                      <thead>
+                          <tr>
+                              <th>No</th>
+                              <th>Result</th>
+                              <th>Product ID</th>
+                              <th>Product Name</th>
+                              <th>Start Time</th>
+                              <th>File Count</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td><input id="Detail_ID" readonly></td>
+                            <td><input id="Detail_State" readonly></td>
+                            <td><input id="Detail_PRODUCT_ID" readonly></td>
+                            <td><input id="Detail_PRODUCT_NAME" readonly></td>
+                            <td><input id="Detail_START_DATETIME" readonly></td>
+                            <td><input id="Detail_FILE_COUNT" readonly></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                    <table class="table table-sm" >
+                      <thead>
+                          <tr>
+                              <th>File Names :</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td><input style="width:100%" id="Detail_FILE_NAMES" readonly></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                    <table class="table table-sm" >
+                      <thead>
+                          <tr>
+                              <th>Detail :</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td><textarea readonly style="font-size: 9pt" id="Detail_LOG" class="form-control" id="exampleTextarea" rows="15"></textarea></td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </table>
                 </div>
             </form>
         </div>

@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row" >
       <div class="col-12" style="">
-        <h4><font face="Tahoma" > | Database Information </font></h4>
+        <font size="4" face="Tahoma" > | Database Information</font>
       </div>
     </div>
     <div class="row" style="height=10px;background-color:#cccccc">
@@ -22,7 +22,7 @@
     <div class="row" style="">
       <div class="col-2"></div>
       <div class="col-8">
-        <form style="align:center" action="http://localhost:4567/serverInfo/db" method="post" enctype='multipart/form-data'>
+        <form id="modifyDBFrom" name="modifyDBFrom">
           <div class="form-group">
             <div class="row">
               <div class="col-3">
@@ -49,7 +49,7 @@
               </div>
             </div>
           </div>
-          <input type="submit" value="Update">
+          <input type="button" value="Update" onclick="updateDBSubmit()" />
         </form>
       </div>
     </div>
@@ -60,7 +60,7 @@
   <div class="container">
     <div class="row" >
       <div class="col-12" style="">
-        <h4><font face="Tahoma" > | FTP Server Information</font></h4>
+        <font size="4" face="Tahoma" > | FTP Server Information</font>
       </div>
     </div>
     <div class="row" style="height=10px;background-color:#cccccc">
@@ -71,7 +71,7 @@
     <div class="row" style="">
       <div class="col-2"></div>
       <div class="col-8">
-        <form style="align:center" action="http://localhost:4567/serverInfo/ftp" method="post" enctype='multipart/form-data'>
+        <form id="modifyFTPFrom" name="modifyFTPFrom">
           <div class="form-check">SFTP
             <label class="form-check-label">
               <input name="INTOPT1" type="checkbox" class="form-check-input" <% if (FTP.FTP_SFTP == 'true') {%> checked<% }%>>
@@ -111,51 +111,38 @@
               </div>
             </div>
           </div>
-          <input type="submit" value="Update">
+          <input type="button" value="Update" onclick="updateFTPSubmit()" />
         </form>
       </div>
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="savveDatabaseInfoModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Save Database Information</h4>
-        </div>
-        <div class="modal-body">
-          <p>Really???</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="savveFTPInfoModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Save FTP Server Information</h4>
-        </div>
-        <div class="modal-body">
-          <p>Really???</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </body>
+<script>
+function updateFTPSubmit() {
+    var params = jQuery("#modifyFTPFrom").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+    $.ajax({
+        url: 'http://localhost:4567/serverInfo/ftp',
+        type: 'POST',
+        data:params,
+        enctype:'multipart/form-data',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'html',
+        success: function (result) { alert(result);window.location.reload(true);},
+        error:  function(result) { alert('ERROR : ' + result);}
+    });
+}
+function updateDBSubmit() {
+    var params = jQuery("#modifyDBFrom").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+    $.ajax({
+        url: 'http://localhost:4567/serverInfo/db',
+        type: 'POST',
+        data:params,
+        enctype:'multipart/form-data',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'html',
+        success: function (result) { alert(result);window.location.reload(true);},
+        error:  function(result) { alert('ERROR : ' + result);}
+    });
+}
+</script>
 </html>

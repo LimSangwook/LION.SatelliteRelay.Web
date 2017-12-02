@@ -11,12 +11,11 @@
   <!--Production Information-->
   <div class="container">
       <div class="row" >
-          <div class="col-4" style="">
-              <h4><font face="Tahoma" > | Satellite-Product Information</font></h4>
+          <div class="col-8" style="">
+              <font size="4" face="Tahoma" > | Scheduled Job List</font>
           </div>
-          <div class="col-1" style="text-align:right;">
-            <button type="button" class="btn btn-light btn-sm" onclick="Create()"><span class="glyphicon glyphicon-plus"></span> + Create</button>
-
+          <div class="col-4" style="text-align:right;">
+            <button type="button" onclick="Create()"> <font size="2">+Create</font></button>
           </div>
       </div>
       <div class="row" style="height=10px;background-color:#cccccc">
@@ -25,47 +24,38 @@
   		<br>
      <div class="row" style="" >
           <div class="col-12">
+              <font size="1">
               <table class="table table-hover table-sm" >
                   <thead >
                       <tr >
                           <th>ID</th>
-                          <th>SatelliteID</th>
+                          <th>Satellite</th>
                           <th>Name</th>
+                          <th>Process Type</th>
                           <th>Filter Type</th>
                           <th>Filter Text</th>
                           <th>Filter REGEXP</th>
+                          <th>Schedule Type</th>
                           <th>Schedule Time</th>
                           <th>Detail</th>
                           <th>Copy</th>
-
-                          <!-- <th>COORD_UL</th>
-                          <th>COORD_LR</th>
-                          <th>REG_DATE</th>
-                          <th>PIXEL_ROW</th>
-                          <th>PIXEL_COL</th>
-                          <th>DATA_TYPE</th>
-                          <th>PROJECTION</th>
-                          <th>QUICK_LOOK</th>
-                          <th>DATA_GBN</th>
-                          <th>DATA_AN_GBN</th>
-                          <th>RESOLUTION</th>
-                          <th>FILE_STATUS</th>
-                          <th>MOUNT_POINT</th>
-                          <th>DATA_OPEN</th> -->
                       </tr>
                   </thead>
                   <tbody>
                     <% for(var i=0; i<PRODUCT.Datas.length; i++) {%>
                       <tr>
                         <td id="ID_<%= i%>"><%= PRODUCT.Datas[i].ID %></td>
-                        <td id="SATELLITE_ID_<%= i%>"><%= PRODUCT.Datas[i].SATELLITE_ID %></td>
-                        <td id="NAME_<%= i%>"><%= PRODUCT.Datas[i].NAME %></td>
+                        <td><input id="SATELLITE_NAME_<%= i%>" style="width:100%" readonly value="<%= PRODUCT.Datas[i].SATELLITE_NAME %>" /></td>
+                        <td><input id="NAME_<%= i%>" style="width:100%" readonly value="<%= PRODUCT.Datas[i].NAME %>" /></td>
+                        <td id="PROCESS_TYPE_<%= i%>"><%= PRODUCT.Datas[i].PROCESS_TYPE %></td>
                         <td id="FILTER_TYPE_<%= i%>"><%= PRODUCT.Datas[i].FILTER_TYPE %></td>
-                        <td id="FILTER_SIMPLE_<%= i%>"><%= PRODUCT.Datas[i].FILTER_SIMPLE %></td>
-                        <td id="FILTER_REGEXP_<%= i%>"><%= PRODUCT.Datas[i].FILTER_REGEXP %></td>
+                        <td><input id="FILTER_SIMPLE_<%= i%>" style="width:100%" readonly value="<%= PRODUCT.Datas[i].FILTER_SIMPLE %>" /></td>
+                        <td><input id="FILTER_REGEXP_<%= i%>" style="width:100%" readonly value="<%= PRODUCT.Datas[i].FILTER_REGEXP %>" /></td>
+                        <td id="SCHEDULE_TYPE_<%= i%>"><%= PRODUCT.Datas[i].SCHEDULE_TYPE %></td>
                         <td id="SCHEDULE_TIME_<%= i%>"><%= PRODUCT.Datas[i].SCHEDULE_TIME %></td>
-                        <td><button type="button" class="btn btn-light btn-sm" onclick="callDetail(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
-                        <td><button type="button" class="btn btn-light btn-sm" onclick="callCopy(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Copy</button></td>
+                        <td><button type="button" onclick="callDetail(<%= i%>)">Detail</button></td>
+                        <td><button type="button" onclick="callCopy(<%= i%>)">Copy</button></td>
+                        <div id="SATELLITE_ID_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].SATELLITE_ID %></div>
                         <div id="SOURCEPATH_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].SOURCEPATH %></div>
                         <div id="TARGETPATH_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].TARGETPATH %></div>
                         <div id="TARGETPATH_TYPE_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].TARGETPATH_TYPE %></div>
@@ -76,11 +66,11 @@
                         <div id="PIXEL_ROW_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].PIXEL_ROW %></div>
                         <div id="PIXEL_COL_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].PIXEL_COL %></div>
                         <div id="DATA_TYPE_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].DATA_TYPE %></div>
+                        <div id="DATA_FORMAT_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].DATA_FORMAT %></div>
                         <div id="PROJECTION_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].PROJECTION %></div>
                         <div id="QUICK_LOOK_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].QUICK_LOOK %></div>
                         <div id="DATA_GBN_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].DATA_GBN %></div>
                         <div id="DATA_AN_GBN_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].DATA_AN_GBN %></div>
-                        <div id="RESOLUTION_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].RESOLUTION %></div>
                         <div id="FILE_STATUS_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].FILE_STATUS %></div>
                         <div id="MOUNT_POINT_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].MOUNT_POINT %></div>
                         <div id="DATA_OPEN_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].DATA_OPEN %></div>
@@ -88,10 +78,17 @@
                       <% } %>
                   </tbody>
               </table>
+            </font>
               <b><div style="text-align:center">
-                <% for(var i=0; i< PRODUCT.TotalPage;i++) { %>
+                  <% if(PRODUCT.NowPage > 10) { %>
+                    <a href="/AdminProduct/<%= (parseInt(PRODUCT.NowPage/10))*10%>"> [PRE] </a>
+                  <%}%>
+                  <% for(var i=parseInt((PRODUCT.NowPage-1)/10)*10; i< (parseInt((PRODUCT.NowPage-1)/10)+1)*10;i++) { if (i >= PRODUCT.TotalPage) break; %>
                   <a href="/AdminProduct/<%= i+1%>"> <%= i+1%> </a>
                   <% } %>
+                  <% if(parseInt((PRODUCT.NowPage-1) / 10) < parseInt(PRODUCT.TotalPage / 10)) { %>
+                      <a href="/AdminProduct/<%= i+1%>"> [NEXT] </a>
+                  <%}%>
                </div></b>
   	</div>
   </div>
@@ -99,13 +96,15 @@
   function callDetail(idx) {
     $('#Detail_ID').val($('#ID_'+idx).html());
     $('#Detail_SATELLITE_ID').val($('#SATELLITE_ID_'+idx).html());
-    $('#Detail_NAME').val($('#NAME_'+idx).html());
+    $('#Detail_NAME').val($('#NAME_'+idx).val());
+    $('#Detail_PROCESS_TYPE').val($('#PROCESS_TYPE_'+idx).html());
     $('#Detail_SOURCEPATH').val($('#SOURCEPATH_'+idx).html());
     $('#Detail_TARGETPATH').val($('#TARGETPATH_'+idx).html());
     $('#Detail_TARGETPATH_TYPE').val($('#TARGETPATH_TYPE_'+idx).html());
     $('#Detail_FILTER_TYPE').val($('#FILTER_TYPE_'+idx).html());
-    $('#Detail_FILTER_SIMPLE').val($('#FILTER_SIMPLE_'+idx).html());
-    $('#Detail_FILTER_REGEXP').val($('#FILTER_REGEXP_'+idx).html());
+    $('#Detail_FILTER_SIMPLE').val($('#FILTER_SIMPLE_'+idx).val());
+    $('#Detail_FILTER_REGEXP').val($('#FILTER_REGEXP_'+idx).val());
+    $('#Detail_SCHEDULE_TYPE').val($('#SCHEDULE_TYPE_'+idx).html());
     $('#Detail_SCHEDULE_TIME').val($('#SCHEDULE_TIME_'+idx).html());
 
     $('#Detail_COORD_UL').val($('#COORD_UL_'+idx).html());
@@ -114,11 +113,11 @@
     $('#Detail_PIXEL_ROW').val($('#PIXEL_ROW_'+idx).html());
     $('#Detail_PIXEL_COL').val($('#PIXEL_COL_'+idx).html());
     $('#Detail_DATA_TYPE').val($('#DATA_TYPE_'+idx).html());
+    $('#Detail_DATA_FORMAT').val($('#DATA_FORMAT_'+idx).html());
     $('#Detail_PROJECTION').val($('#PROJECTION_'+idx).html());
     $('#Detail_QUICK_LOOK').val($('#QUICK_LOOK_'+idx).html());
     $('#Detail_DATA_GBN').val($('#DATA_GBN_'+idx).html());
     $('#Detail_DATA_AN_GBN').val($('#DATA_AN_GBN_'+idx).html());
-    $('#Detail_RESOLUTION').val($('#RESOLUTION_'+idx).html());
     $('#Detail_FILE_STATUS').val($('#FILE_STATUS_'+idx).html());
     $('#Detail_MOUNT_POINT').val($('#MOUNT_POINT_'+idx).html());
     $('#Detail_DATA_OPEN').val($('#DATA_OPEN_'+idx).html());
@@ -127,13 +126,15 @@
   function callCopy(idx) {
     $('#Create_ID').val($('#ID_'+idx).html());
     $('#Create_SATELLITE_ID').val($('#SATELLITE_ID_'+idx).html());
-    $('#Create_NAME').val($('#NAME_'+idx).html());
+    $('#Create_NAME').val($('#NAME_'+idx).val());
+    $('#Create_PROCESS_TYPE').val($('#PROCESS_TYPE_'+idx).html());
     $('#Create_SOURCEPATH').val($('#SOURCEPATH_'+idx).html());
     $('#Create_TARGETPATH').val($('#TARGETPATH_'+idx).html());
     $('#Create_TARGETPATH_TYPE').val($('#TARGETPATH_TYPE_'+idx).html());
     $('#Create_FILTER_TYPE').val($('#FILTER_TYPE_'+idx).html());
-    $('#Create_FILTER_SIMPLE').val($('#FILTER_SIMPLE_'+idx).html());
-    $('#Create_FILTER_REGEXP').val($('#FILTER_REGEXP_'+idx).html());
+    $('#Create_FILTER_SIMPLE').val($('#FILTER_SIMPLE_'+idx).val());
+    $('#Create_FILTER_REGEXP').val($('#FILTER_REGEXP_'+idx).val());
+    $('#Create_SCHEDULE_TYPE').val($('#SCHEDULE_TYPE_'+idx).html());
     $('#Create_SCHEDULE_TIME').val($('#SCHEDULE_TIME_'+idx).html());
 
     $('#Create_COORD_UL').val($('#COORD_UL_'+idx).html());
@@ -142,11 +143,11 @@
     $('#Create_PIXEL_ROW').val($('#PIXEL_ROW_'+idx).html());
     $('#Create_PIXEL_COL').val($('#PIXEL_COL_'+idx).html());
     $('#Create_DATA_TYPE').val($('#DATA_TYPE_'+idx).html());
+    $('#Create_DATA_FORMAT').val($('#DATA_FORMAT_'+idx).html());
     $('#Create_PROJECTION').val($('#PROJECTION_'+idx).html());
     $('#Create_QUICK_LOOK').val($('#QUICK_LOOK_'+idx).html());
     $('#Create_DATA_GBN').val($('#DATA_GBN_'+idx).html());
     $('#Create_DATA_AN_GBN').val($('#DATA_AN_GBN_'+idx).html());
-    $('#Create_RESOLUTION').val($('#RESOLUTION_'+idx).html());
     $('#Create_FILE_STATUS').val($('#FILE_STATUS_'+idx).html());
     $('#Create_MOUNT_POINT').val($('#MOUNT_POINT_'+idx).html());
     $('#Create_DATA_OPEN').val($('#DATA_OPEN_'+idx).html());
@@ -154,14 +155,15 @@
   }
   function Create() {
     $('#Create_ID').val('');
-    $('#Create_SATELLITE_ID').val('');
-    $('#Create_NAME').val('');
+    // $('#Create_SATELLITE_ID').val('');
+    // $('#Create_NAME').val('');
     $('#Create_SOURCEPATH').val('');
     $('#Create_TARGETPATH').val('');
-    $('#Create_TARGETPATH_TYPE').val('');
-    $('#Create_FILTER_TYPE').val('');
+    // $('#Create_TARGETPATH_TYPE').val('');
+    // $('#Create_FILTER_TYPE').val('');
     $('#Create_FILTER_SIMPLE').val('');
     $('#Create_FILTER_REGEXP').val('');
+    // $('#Create_SCHEDULE_TYPE').val('');
     $('#Create_SCHEDULE_TIME').val('');
 
     $('#Create_COORD_UL').val('');
@@ -169,12 +171,12 @@
     $('#Create_REG_DATE').val('');
     $('#Create_PIXEL_ROW').val('');
     $('#Create_PIXEL_COL').val('');
-    $('#Create_DATA_TYPE').val('');
+    // $('#Create_DATA_TYPE').val('');
+    // $('#Create_DATA_FORMAT').val('');
     $('#Create_PROJECTION').val('');
     $('#Create_QUICK_LOOK').val('');
-    $('#Create_DATA_GBN').val('');
-    $('#Create_DATA_AN_GBN').val('');
-    $('#Create_RESOLUTION').val('');
+    // $('#Create_DATA_GBN').val('');
+    // $('#Create_DATA_AN_GBN').val('');
     $('#Create_FILE_STATUS').val('');
     $('#Create_MOUNT_POINT').val('');
     $('#Create_DATA_OPEN').val('');

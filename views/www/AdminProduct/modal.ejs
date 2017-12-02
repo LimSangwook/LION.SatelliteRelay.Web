@@ -1,164 +1,325 @@
-
 <!-- Create Product Information -->
-<div class="modal fade" id="createProductModal" role="dialog">
-<div class="modal-dialog">
-  <!-- Modal content-->
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">New Product</h4>
-    </div>
-    <form style="align:center" action="http://localhost:4567/product/create" method="post" enctype='multipart/form-data'>
-    <div class="modal-body">
-            <div class="form-group">
-                <div class="row">
-                  <div class="col-5" >
-                      <label>SATELLITE_ID </label><br>
-                      <label>NAME </label><br>
-                      <label>SOURCEPATH </label><br>
-                      <label>TARGETPATH </label><br>
-                      <label>TARGETPATH_TYPE </label><br>
-                      <label>FILTER_TYPE </label><br>
-                      <label>FILTER_SIMPLE </label><br>
-                      <label>FILTER_REGEXP </label><br>
-                      <label>SCHEDULE_TIME </label><br><br>
-
-                      <label>COORD_UL </label><br>
-                      <label>COORD_LR </label><br>
-                      <label>REG_DATE </label><br>
-                      <label>PIXEL_ROW </label><br>
-                      <label>PIXEL_COL </label><br>
-                      <label>DATA_TYPE </label><br>
-                      <label>PROJECTION </label><br>
-                      <label>QUICK_LOOK </label><br>
-                      <label>DATA_GBN </label><br>
-                      <label>DATA_AN_GBN </label><br>
-                      <label>RESOLUTION </label><br>
-                      <label>FILE_STATUS </label><br>
-                      <label>MOUNT_POINT </label><br>
-                      <label>DATA_OPEN </label>
-                  </div>
-                  <div class="col-5">
-                    <input style="height:32px" name="SATELLITE_ID" id="Create_SATELLITE_ID"><br>
-                    <input style="height:32px" name="NAME" id="Create_NAME"><br>
-                    <input style="height:32px" name="SOURCEPATH" id="Create_SOURCEPATH"><br>
-                    <input style="height:32px" name="TARGETPATH" id="Create_TARGETPATH"><br>
-                    <input style="height:32px" name="TARGETPATH_TYPE" id="Create_TARGETPATH_TYPE"><br>
-                    <input style="height:32px" name="FILTER_TYPE" id="Create_FILTER_TYPE"><br>
-                    <input style="height:32px" name="FILTER_SIMPLE" id="Create_FILTER_SIMPLE"><br>
-                    <input style="height:32px" name="FILTER_REGEXP" id="Create_FILTER_REGEXP"><br>
-                    <input style="height:32px" name="SCHEDULE_TIME" id="Create_SCHEDULE_TIME"><br>
-                    <br>
-                    <input style="height:32px" name="COORD_UL" id="Create_COORD_UL"><br>
-                    <input style="height:32px" name="COORD_LR" id="Create_COORD_LR"><br>
-                    <input style="height:32px" name="REG_DATE" id="Create_REG_DATE"><br>
-                    <input style="height:32px" name="PIXEL_ROW" id="Create_PIXEL_ROW"><br>
-                    <input style="height:32px" name="PIXEL_COL" id="Create_PIXEL_COL"><br>
-                    <input style="height:32px" name="DATA_TYPE" id="Create_DATA_TYPE"><br>
-                    <input style="height:32px" name="PROJECTION" id="Create_PROJECTION"><br>
-                    <input style="height:32px" name="QUICK_LOOK" id="Create_QUICK_LOOK"><br>
-                    <input style="height:32px" name="DATA_GBN" id="Create_DATA_GBN"><br>
-                    <input style="height:32px" name="DATA_AN_GBN" id="Create_DATA_AN_GBN"><br>
-                    <input style="height:32px" name="RESOLUTION" id="Create_RESOLUTION"><br>
-                    <input style="height:32px" name="FILE_STATUS" id="Create_FILE_STATUS"><br>
-                    <input style="height:32px" name="MOUNT_POINT" id="Create_MOUNT_POINT"><br>
-                    <input style="height:32px" name="DATA_OPEN" id="Create_DATA_OPEN"><br>
-                  </div>
-                </div>
-
+<div class="modal fade" id="createProductModal" role="dialog" >
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Job Schedule Registration</h4>
+      </div>
+      <form id="createFrom" name="createForm" >
+        <div class="modal-body">
+          <div class="form-group">
+<font color="red"><b>REQUIRED :</b></font>
+            <font size="1">
+              <table class="table table-sm">
+                <thead >
+                  <tr >
+                    <th style="width: 5%">SATELLITE </th>
+                    <th style="width: 5%">NAME </th>
+                    <th style="width: 5%">PROCESS TYPE </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td><select style="width:100%;height:30px" name="SATELLITE_ID" id="Create_SATELLITE_ID"><% include ./optionsSatelliteName.ejs%></select></td>
+                    <td><input style="width:100%;height:32px" name="NAME" id="Create_NAME"></td>
+                    <td><select style="width:100%;height:30px" name="PROCESS_TYPE" id="Create_PROCESS_TYPE"><% include ./optionsProcessTYPE.ejs%></select></td>
+                  </tr>
+                </tbody>
+                <thead >
+                  <tr >
+                    <th style="width: 5%">SOURCEPATH </th>
+                    <th style="width: 5%">TARGETPATH </th>
+                    <th style="width: 5%">TARGETPATH TYPE </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td><input style="width:100%;height:32px" name="SOURCEPATH" id="Create_SOURCEPATH"></td>
+                    <td><input style="width:100%;height:32px" name="TARGETPATH" id="Create_TARGETPATH"></td>
+                    <td><select style="width:100%;height:30px" name="TARGETPATH_TYPE" id="Create_TARGETPATH_TYPE"><% include ./optionsTargetPathType.ejs%></select></td>
+                  </tr>
+                </tbody>
+                <thead >
+                  <tr >
+                    <th style="width: 5%">FILTER TYPE </th>
+                    <th style="width: 5%">SIMPLE FILTER</th>
+                    <th style="width: 5%">REGEXP FILTER</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td><select style="width:100%;height:30px" name="FILTER_TYPE" id="Create_FILTER_TYPE"><% include ./optionsFilterTYPE.ejs%></select></td>
+                    <td><input style="width:100%;height:32px" name="FILTER_SIMPLE" id="Create_FILTER_SIMPLE"></td>
+                    <td><input style="width:100%;height:32px" name="FILTER_REGEXP" id="Create_FILTER_REGEXP"></td>
+                  </tr>
+                </tbody>
+                <thead >
+                  <tr >
+                    <th style="width: 5%">SCHEDULE TYPE </th>
+                    <th style="width: 5%">SCHEDULE TIME </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td><select style="width:100%;height:30px" name="SCHEDULE_TYPE" id="Create_SCHEDULE_TYPE"><% include ./optionsScheduleTYPE.ejs%></select></td>
+                    <td><input style="width:100%;height:32px" name="SCHEDULE_TIME" id="Create_SCHEDULE_TIME" placeholder="24:00:00"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </font>
+<font color="blue"><b>APPENDIX :</b></font>
+            <font size="1">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th style="width: 5%">COORD UL </th>
+                    <th style="width: 5%">COORD LR </th>
+                    <th style="width: 5%">REG DATE </th>
+                    <th style="width: 5%">PIXEL ROW </th>
+                    <th style="width: 5%">PIXEL_COL </th>
+                    <th style="width: 5%">DATA TYPE </th>
+                    <th style="width: 5%">DATA FORMAT </th>
+                    <th style="width: 5%">PROJECTION </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input style="width:100%;height:32px" name="COORD_UL" id="Create_COORD_UL"></td>
+                    <td><input style="width:100%;height:32px" name="COORD_LR" id="Create_COORD_LR"></td>
+                    <td><input style="width:100%;height:32px" name="REG_DATE" id="Create_REG_DATE"></td>
+                    <td><input style="width:100%;height:32px" name="PIXEL_ROW" id="Create_PIXEL_ROW"></td>
+                    <td><input style="width:100%;height:32px" name="PIXEL_COL" id="Create_PIXEL_COL"></td>
+                    <td><select style="width:100%;height:30px" name="DATA_TYPE" id="Create_DATA_TYPE"><% include ./optionsDataTYPE.ejs%></select></td>
+                    <td><select style="width:100%;height:30px" name="DATA_FORMAT" id="Create_DATA_FORMAT"><% include ./optionsDataFormat.ejs%></select></td>
+                    <td><input style="width:100%;height:32px" name="PROJECTION" id="Create_PROJECTION"></td>
+                  </tr>
+                </tbody>
+                <thead>
+                  <tr>
+                    <th style="width: 5%">QUICK LOOK </th>
+                    <th style="width: 5%">DATA GBN </th>
+                    <th style="width: 5%">DATA AN GBN </th>
+                    <th style="width: 5%">FILE STATUS </th>
+                    <th style="width: 5%">MOUNT POINT </th>
+                    <th style="width: 5%">DATA OPEN </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input style="width:100%;height:32px" name="QUICK_LOOK" id="Create_QUICK_LOOK"></td>
+                    <td><select style="width:100%;height:30px" name="DATA_GBN" id="Create_DATA_GBN"><% include ./optionsTBDataGBN.ejs%></select></td>
+                    <td><select style="width:100%;height:30px" name="DATA_AN_GBN" id="Create_DATA_AN_GBN"><% include ./optionsTBDataANGBN.ejs%></select></td>
+                    <td><input style="width:100%;height:32px" name="FILE_STATUS" id="Create_FILE_STATUS"></td>
+                    <td><input style="width:100%;height:32px" name="MOUNT_POINT" id="Create_MOUNT_POINT"></td>
+                    <td><input style="width:100%;height:32px" name="DATA_OPEN" id="Create_DATA_OPEN"></td>
+                  </tr>
+                </tbody>
+                <thead>
+                </table>
+              </font>
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal">Cancle</button>
+            <input type="button" value="Create" onclick="createFormSubmit()" />
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-      <input type="submit" value="Create">
-    </div>
-  </form>
   </div>
-</div>
-</div>
+
 
 <!-- Modify Product Information -->
 <div class="modal fade" id="modifyProductModal" role="dialog">
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg" style="width:1000px">
   <!-- Modal content-->
-  <div class="modal-content">
+  <div class="modal-content" >
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Product Information</h4>
+      <h4 class="modal-title">Job Schedule Details</h4>
     </div>
-    <form style="align:center" action="http://localhost:4567/product/update" method="post" enctype='multipart/form-data'>
+    <form id="modifyFrom" name="modifyFrom" >
     <div class="modal-body">
             <div class="form-group">
-                <div class="row">
-                        <div class="col-1" > </div>
-                    <div class="col-5">
-                        <label>ID </label><br>
-                        <label>SATELLITE_ID </label><br>
-                        <label>NAME </label><br>
-                        <label>SOURCEPATH </label><br>
-                        <label>TARGETPATH </label><br>
-                        <label>TARGETPATH_TYPE </label><br>
-                        <label>FILTER_TYPE </label><br>
-                        <label>FILTER_SIMPLE </label><br>
-                        <label>FILTER_REGEXP </label><br>
-                        <label>SCHEDULE_TIME </label><br><br>
+<font color="red"><b>REQUIRED :</b></font>
+              <font size="1">
+                <table class="table table-sm">
+                  <thead >
+                    <tr >
+                      <th style="width: 3%">ID </th>
+                      <th style="width: 3%">SATELLITE </th>
+                      <th style="width: 3%">NAME </th>
+                      <th style="width: 3%">PROCESS_TYPE </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr >
+                      <td><input style="width:100%;height:32px" name="ID" id="Detail_ID" readonly></td>
+                      <td><select style="width:100%;height:30px" name="SATELLITE_ID" id="Detail_SATELLITE_ID"><% include ./optionsSatelliteName.ejs%></select></td>
+                      <td><input style="width:100%;height:32px" name="NAME" id="Detail_NAME"></td>
+                      <td><select style="width:100%;height:30px" name="PROCESS_TYPE" id="Detail_PROCESS_TYPE"><% include ./optionsProcessTYPE.ejs%></select></td>
+                    </tr>
+                  </tbody>
+                  <thead >
+                    <tr >
+                      <th style="width: 3%">SOURCEPATH </th>
+                      <th style="width: 3%">TARGETPATH </th>
+                      <th style="width: 3%">TARGETPATH_TYPE </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr >
+                      <td><input style="width:100%;height:32px" name="SOURCEPATH" id="Detail_SOURCEPATH"></td>
+                      <td><input style="width:100%;height:32px" name="TARGETPATH" id="Detail_TARGETPATH"></td>
+                      <td><select style="width:100%;height:30px" name="TARGETPATH_TYPE" id="Detail_TARGETPATH_TYPE"><% include ./optionsTargetPathType.ejs%></select></td>
+                    </tr>
+                  </tbody>
+                  <thead >
+                    <tr >
+                      <th style="width: 3%">FILTER TYPE </th>
+                      <th style="width: 3%">SIMPLE FILTER</th>
+                      <th style="width: 3%">REGEXP FILTER</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr >
+                      <td><select style="width:100%;height:30px" name="FILTER_TYPE" id="Detail_FILTER_TYPE"><% include ./optionsFilterTYPE.ejs%></select></td>
+                      <td><input style="width:100%;height:32px" name="FILTER_SIMPLE" id="Detail_FILTER_SIMPLE"></td>
+                      <td><input style="width:100%;height:32px" name="FILTER_REGEXP" id="Detail_FILTER_REGEXP"></td>
+                    </tr>
+                  </tbody>
 
-                        <label>COORD_UL </label><br>
-                        <label>COORD_LR </label><br>
-                        <label>REG_DATE </label><br>
-                        <label>PIXEL_ROW </label><br>
-                        <label>PIXEL_COL </label><br>
-                        <label>DATA_TYPE </label><br>
-                        <label>PROJECTION </label><br>
-                        <label>QUICK_LOOK </label><br>
-                        <label>DATA_GBN </label><br>
-                        <label>DATA_AN_GBN </label><br>
-                        <label>RESOLUTION </label><br>
-                        <label>FILE_STATUS </label><br>
-                        <label>MOUNT_POINT </label><br>
-                        <label>DATA_OPEN </label>
-                    </div>
-                    <div class="col-5">
-                      <input style="height:32px" name="ID" id="Detail_ID" readonly><br>
-                      <input style="height:32px" name="SATELLITE_ID" id="Detail_SATELLITE_ID"><br>
-                      <input style="height:32px" name="NAME" id="Detail_NAME"><br>
-                      <input style="height:32px" name="SOURCEPATH" id="Detail_SOURCEPATH"><br>
-                      <input style="height:32px" name="TARGETPATH" id="Detail_TARGETPATH"><br>
-                      <input style="height:32px" name="TARGETPATH_TYPE" id="Detail_TARGETPATH_TYPE"><br>
-                      <input style="height:32px" name="FILTER_TYPE" id="Detail_FILTER_TYPE"><br>
-                      <input style="height:32px" name="FILTER_SIMPLE" id="Detail_FILTER_SIMPLE"><br>
-                      <input style="height:32px" name="FILTER_REGEXP" id="Detail_FILTER_REGEXP"><br>
-                      <input style="height:32px" name="SCHEDULE_TIME" id="Detail_SCHEDULE_TIME"><br>
-                      <br>
-                      <input style="height:32px" name="COORD_UL" id="Detail_COORD_UL"><br>
-                      <input style="height:32px" name="COORD_LR" id="Detail_COORD_LR"><br>
-                      <input style="height:32px" name="REG_DATE" id="Detail_REG_DATE"><br>
-                      <input style="height:32px" name="PIXEL_ROW" id="Detail_PIXEL_ROW"><br>
-                      <input style="height:32px" name="PIXEL_COL" id="Detail_PIXEL_COL"><br>
-                      <input style="height:32px" name="DATA_TYPE" id="Detail_DATA_TYPE"><br>
-                      <input style="height:32px" name="PROJECTION" id="Detail_PROJECTION"><br>
-                      <input style="height:32px" name="QUICK_LOOK" id="Detail_QUICK_LOOK"><br>
-                      <input style="height:32px" name="DATA_GBN" id="Detail_DATA_GBN"><br>
-                      <input style="height:32px" name="DATA_AN_GBN" id="Detail_DATA_AN_GBN"><br>
-                      <input style="height:32px" name="RESOLUTION" id="Detail_RESOLUTION"><br>
-                      <input style="height:32px" name="FILE_STATUS" id="Detail_FILE_STATUS"><br>
-                      <input style="height:32px" name="MOUNT_POINT" id="Detail_MOUNT_POINT"><br>
-                      <input style="height:32px" name="DATA_OPEN" id="Detail_DATA_OPEN"><br>
-                    </div>
-                </div>
+                  <thead >
+                    <tr >
+                      <th style="width: 3%">SCHEDULE TYPE </th>
+                      <th style="width: 3%">SCHEDULE TIME </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr >
+                      <td><select style="width:100%;height:30px" name="SCHEDULE_TYPE" id="Detail_SCHEDULE_TYPE"><% include ./optionsScheduleTYPE.ejs%></select></td>
+                      <td><input style="width:100%;height:32px" name="SCHEDULE_TIME" id="Detail_SCHEDULE_TIME" placeholder="24:00:00"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </font>
+<font color="blue"><b>APPENDIX :</b></font>
+              <font size="1">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th style="width: 3%">COORD UL </th>
+                      <th style="width: 3%">COORD LR </th>
+                      <th style="width: 3%">REG DATE </th>
+                      <th style="width: 3%">PIXEL ROW </th>
+                      <th style="width: 3%">PIXEL COL </th>
+                      <th style="width: 3%">DATA TYPE </th>
+                      <th style="width: 3%">DATA FORMAT </th>
+                      <th style="width: 3%">PROJECTION </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input style="width:100%;height:32px" name="COORD_UL" id="Detail_COORD_UL"></td>
+                      <td><input style="width:100%;height:32px" name="COORD_LR" id="Detail_COORD_LR"></td>
+                      <td><input style="width:100%;height:32px" name="REG_DATE" id="Detail_REG_DATE"></td>
+                      <td><input style="width:100%;height:32px" name="PIXEL_ROW" id="Detail_PIXEL_ROW"></td>
+                      <td><input style="width:100%;height:32px" name="PIXEL_COL" id="Detail_PIXEL_COL"></td>
+                      <td><select style="width:100%;height:30px" name="DATA_TYPE" id="Detail_DATA_TYPE"><% include ./optionsDataTYPE.ejs%></select></td>
+                      <td><select style="width:100%;height:30px" name="DATA_FORMAT" id="Detail_DATA_FORMAT"><% include ./optionsDataFormat.ejs%></select></td>
+                      <td><input style="width:100%;height:32px" name="PROJECTION" id="Detail_PROJECTION"></td>
+                    </tr>
+                  </tbody>
+                  <thead>
+                    <tr>
+                      <th style="width: 3%">QUICK LOOK </th>
+                      <th style="width: 3%">DATA GBN </th>
+                      <th style="width: 3%">DATA AN GBN </th>
+                      <th style="width: 3%">FILE STATUS </th>
+                      <th style="width: 3%">MOUNT POINT </th>
+                      <th style="width: 3%">DATA OPEN </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input style="width:100%;height:32px" name="QUICK_LOOK" id="Detail_QUICK_LOOK"></td>
+                      <td><select style="width:100%;height:30px" name="DATA_GBN" id="Detail_DATA_GBN"><% include ./optionsTBDataGBN.ejs%></select></td>
+                      <td><select style="width:100%;height:30px" name="DATA_AN_GBN" id="Detail_DATA_AN_GBN"><% include ./optionsTBDataANGBN.ejs%></select></td>
+                      <td><input style="width:100%;height:32px" name="FILE_STATUS" id="Detail_FILE_STATUS"></td>
+                      <td><input style="width:100%;height:32px" name="MOUNT_POINT" id="Detail_MOUNT_POINT"></td>
+                      <td><input style="width:100%;height:32px" name="DATA_OPEN" id="Detail_DATA_OPEN"></td>
+                    </tr>
+                  </tbody>
+                  <thead>
+                  </table>
+              </font>
             </div>
     </div>
     <div class="modal-footer">
-      <button onclick="deleteProduct()">Delete</button>
-      <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-      <input type="submit" value="Update">
     </div>
+    <div class="row">
+      <div class="col-1">
+      </div>
+        <div class="col-4">
+          <button type="button" data-dismiss="modal" align="left;" onclick="deleteProduct()">Delete</button>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-4">
+          <button type="button" data-dismiss="modal">Cancle</button>
+          <input type="button" value="Update" align="left;" onclick="modifyFormSubmit()" />
+        </div>
+        <div class="col-1">
+        </div>
+      </div>
+      <br>
+
+
   </form>
   </div>
 </div>
 <script>
-function deleteProduct() {
-  var URL = "http://localhost:4567/product/delete/" + $('#Detail_ID').val();
-  window.location=URL;
+function createFormSubmit() {
+    var params = jQuery("#createFrom").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+    $.ajax({
+        url: 'http://localhost:4567/product/create',
+        type: 'POST',
+        data:params,
+        enctype:'multipart/form-data',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'html',
+        success: function (result) { alert(result);window.location.reload(true);},
+        error:  function(result) { alert('ERROR : ' + result);}
+    });
+    $('#createSatelliteModal').modal('hide');
 }
+function modifyFormSubmit() {
+    var params = jQuery("#modifyFrom").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+    $.ajax({
+        url: 'http://localhost:4567/product/update',
+        type: 'POST',
+        data:params,
+        enctype:'multipart/form-data',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'html',
+        success: function (result) { alert(result);window.location.reload(true);},
+        error:  function(result) { alert('ERROR : ' + result);}
+    });
+    $('#modifyProductModal').modal('hide');
+}
+function deleteProduct() {
+    $.ajax({
+        url: "http://localhost:4567/product/delete/" + $('#Detail_ID').val(),
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'html',
+        success: function (result) { alert(result);window.location.reload(true);},
+        error:  function(result) { alert('ERROR : ' + result);}
+    });
+    $('#modifyProductModal').modal('hide');
+}
+</script>
+
 </script>

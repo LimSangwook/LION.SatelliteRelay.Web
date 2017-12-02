@@ -1,133 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+  <title>Page Title</title>
 </head>
 <body>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-  <div class="container" style="height:70px">
-      <div class="row" style="height:10px">
-      </div>
-      <div class="row" >
-          <div class="col-1" >
-              <img src = "/images/top_nifslogo.png" align="center" />
-          </div>
-          <div class="col-10" style="text-align:center">
-              <h1><font face="Tahoma">Satellite Data Relay Service</font></h1>
-          </div>
-          <div class="col-1" style="">
-              <a href="/">
-                  <img src = "/AdminSatellite/top_dashboard.png" height="50" align="center" >
-              </a>
-          </div>
-      </div>
-  </div>
-  <!--TITLE-->
-  <div class="row" style="height:38px">
-     <div class="col-12" style="background-color:#005890;text-align:center">
-         <h2><font face="Tahoma" color="white">Admin Password</font></h2>
-     </div>
-  </div>
-  <br>
-  <!--TAB-->
-  <div class="container">
-      <div class="row" >
-          <img src = "Tab_Menu.png" height="50" align="center" usemap="#planetmap">
-          <map name="planetmap">
-            <area shape="rect" coords="22,0,260,45" href="/AdminSatellite" alt="1">
-            <area shape="rect" coords="261,0,500,45" href="/AdminTargetServer" alt="2">
-            <area shape="rect" coords="501,0,740,45" href="/AdminPassword" alt="3">
-          </map>
-      </div>
-  </div>
-  <!--Line-->
-      <div class="row" style="height=10px;background-color:#cccccc">
-          <div class="col-12">
-          </div>
-      </div>
-  <br>
-  <!--Satellite Information-->
-  <div class="container" >
-      <div class="row" >
-          <div class="col-12" style="">
-              <h4><font face="Tahoma" > | Set Admin Password</font></h4>
-          </div>
-      </div>
-          <div class="row" style="height=10px;background-color:#cccccc">
-          <div class="col-12">
-          </div>
-      </div>
-      <br>
-      <div class="row" style="">
-  		<div class="col-2"></div>
-          <div class="col-8">
-                <form style="align:center">
-                  <div class="form-group">
-  					<div class="row">
-                           <div class="col-2"></div>
-  						<div class="col-3">
-                              <label for="exampleInputEmail1">Now Password</label>
-  						</div>
-  						<div class="col-3">
-                              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-  						</div>
-  					</div>
-                  </div>
-                   <div class="form-group">
-                      <div class="row">
-                           <div class="col-2"></div>
-
-  						<div class="col-3">
-                              <label for="exampleInputEmail1">New Password</label>
-                          </div>
-                          <div class="col-3">
-                              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                          </div>
-                      </div>
-                  </div>                <div class="form-group">
-                      <div class="row">
-                           <div class="col-2"></div>
-
-  						<div class="col-3">
-                              <label for="exampleInputEmail1">Confirm Password</label>
-                          </div>
-                          <div class="col-3">
-                              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                          </div>
-                      </div>
-                  </div>
-  				<button style="display: block;margin-left: auto;margin-right: auto" type="button" class="btn btn-primary " data-toggle="modal" data-target="#changePasswordModal">Change</button>
-              </form>
-          </div>
-      </div>
-
-  <!-- Modal -->
-    <div class="modal fade" id="changePasswordModal" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Change Admin Password</h4>
-          </div>
-          <div class="modal-body">
-            <p>Really???</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-  		  <button type="button" class="btn btn-primary" data-dismiss="modal">Change</button>
+  <% include ../Share/bootstrap.ejs%>
+  <% include ../Share/top.ejs%>
+  <% include ../Share/tab.ejs%>
+  <div class="row" style="">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <form style="align:center">
+        <br>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-3">
+              <label for="exampleInputEmail1">Now Password</label>
+            </div>
+            <div class="col-3">
+              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            </div>
           </div>
         </div>
+        <br><br>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-3">
+              <label for="exampleInputEmail1">New Password</label>
+            </div>
+            <div class="col-3">
+              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            </div>
+          </div>
+        </div>                <div class="form-group">
+          <div class="row">
+            <div class="col-2"></div>
 
-      </div>
+            <div class="col-3">
+              <label for="exampleInputEmail1">Confirm Password</label>
+            </div>
+            <div class="col-3">
+              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            </div>
+          </div>
+        </div>
+        <button style="display: block;margin-left: auto;margin-right: auto" type="button" class="btn btn-primary " data-toggle="modal" data-target="#changePasswordModal">Change</button>
+      </form>
     </div>
-
-
-  </div>
-
-
-</body>
-</html>
+  </body>
+  </html>

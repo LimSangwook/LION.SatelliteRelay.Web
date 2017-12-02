@@ -16,12 +16,13 @@ app.use(express.static('views/www/Share'));
 app.use(express.static('views/www/AdminTargetServer'));
 app.use(express.static('views/www/AdminSatellite'));
 app.use(express.static('views/www/AdminHistory'));
+app.use(express.static('views/www/AdminPassword'));
 app.use('js',express.static('views/www/js'));
 // app.use(express.static('views/www/AdminProduct'));
 // app.use(express.static('views/www'));
 // app.use(express.static('public'));
 app.use(session({
- secret: '@#@$MYSIGN#!!!$',
+ secret: '@#@$SATELLITE_RELAY_WEB#!!!$',
  resave: false,
  saveUninitialized: true
 }));
