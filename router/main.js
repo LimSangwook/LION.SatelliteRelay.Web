@@ -58,7 +58,7 @@ function setHistory(app) {
     var totData = {};
     totData['title'] = 'Job History List'
     var coreReq = coreRestApiClient.get(URL_LIST, RESTAPI_CALL_ARGS, function (data, response) {
-      console.log('GET ' + URL_LIST + " : " + data.toString());
+      console.log('GET ' + URL_LIST);
       totData['HISTORY'] = JSON.parse(data.toString());
       res.render('www/AdminHistory/index.html', totData);
     });
@@ -79,7 +79,7 @@ function setAdminSatellite(app) {
     var totData = {};
     totData['title'] = 'Satellite Infomation'
     var coreReq = coreRestApiClient.get(URL_SATELLITE_LIST, RESTAPI_CALL_ARGS, function (data, response) {
-      console.log('GET ' + URL_SATELLITE_LIST + " : " + data.toString());
+      console.log('GET ' + URL_SATELLITE_LIST + " Page : " + satellitePage);
       totData['SATELLITE'] = JSON.parse(data.toString());
       res.render('www/AdminSatellite/index.html', totData);
     });
@@ -112,7 +112,7 @@ function setAdminProduct(app) {
     totData['PRODUCT_PROCESS_TYPE'] = OPTION_LIST.PRODUCT_PROCESS_TYPE;
 
     var coreReq = coreRestApiClient.get(URL_PRODUCT_LIST, RESTAPI_CALL_ARGS, function (data, response) {
-      console.log('GET ' + URL_PRODUCT_LIST + " : " + data.toString());
+      console.log('GET ' + URL_PRODUCT_LIST + " Page : " + productPage);
       totData['PRODUCT'] = JSON.parse(data.toString());
       res.render('www/AdminProduct/index.html', totData);
     });
@@ -145,8 +145,6 @@ function setAdminPassword(app) {
   app.get('/AdminPassword',function(req,res){
     if (checkAdminPermission(req.session, res) == false) return;
     sess = req.session;
-    console.log("@@@@ : " + sess.adminCheck);
-    console.info(sess);
     var totData = {};
     totData['title'] = 'Admin Password';
     res.render('www/AdminPassword/index.html', totData);
@@ -157,10 +155,6 @@ function setAdminPassword(app) {
     var newPassword = req.body.newPassword;
     var repeatPassword = req.body.repeatPassword;
 
-    console.log("old Password : " + oldPassword);
-    console.log("new Password : " + newPassword);
-    console.log("repeat Password : " + repeatPassword);
-
     var adminData = JSON.parse(fs.readFileSync(PasswordFile).toString());
     if(!adminData["password"]){
       adminData["password"]='admin'; // Default Password
@@ -170,14 +164,14 @@ function setAdminPassword(app) {
       res.json("Success");
       fs.writeFile(PasswordFile, '{"password": "'+ newPassword +'"}', (err) => {
         if (err) {
-          console.log('Paasword is Failed : ' + err);
+          console.log('Change Paasword Failed : ' + err);
           res.json("Failed");
         }
-        console.log('Paasword is Changed');
+        console.log('Change Paasword Successed');
 
       });
     }else{
-      console.log('Paasword is Failed');
+      console.log('Change Paasword Failed');
       res.json("Failed");
     }
   });
@@ -189,11 +183,11 @@ function setAdminPassword(app) {
   });
 
   app.get('/checkLogin/:password', function(req, res){
-    console.log("checkLogin");
+    console.log("CheckLogin");
     var sess;
     sess = req.session;
     sess.adminCheck = false;
-    fs.readFile(__dirname + "/../password.json", "utf8", function(err, data){
+    fs.readFile(PasswordFile, "utf8", function(err, data){
       var users = JSON.parse(data);
       var password = req.params.password;
       var result = {};
@@ -211,7 +205,6 @@ function setAdminPassword(app) {
         sess.adminCheck = false;
         res.json(result);
       }
-      console.info(result);
     })
   });
 
