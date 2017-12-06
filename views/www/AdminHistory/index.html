@@ -11,8 +11,12 @@
   <!--Satellite Information-->
   <div class="container">
       <div class="row" >
-          <div class="col-12" style="">
-            <font size="4" face="Tahoma" > | Schedule History List</font>
+          <div class="col-8" style="">
+            <font size="4" face="Tahoma" > | Job History Log &nbsp &nbsp &nbsp &nbsp     </font>
+            <button type="button" onclick="window.location.reload()"> <font size="2">Reload</font></button>
+          </div>
+          <div class="col-4" style="text-align:right;">
+            <button type="button" onclick="Create()"> <font size="2">History Clear</font></button>
           </div>
   	</div>
   	    <div class="row" style="height=10px;background-color:#cccccc">
@@ -29,26 +33,31 @@
                       <tr>
                           <th>No</th>
                           <th>Result</th>
-                          <th>P.ID</th>
-                          <th>P.Name</th>
+                          <th>J.ID</th>
+                          <th>Job Name</th>
                           <th>Start Time</th>
                           <th>File Count</th>
                           <th>File Names</th>
-                          <th>Detail</th>
+                          <th>View</th>
                       </tr>
                   </thead>
                   <tbody>
                     <% for(var i=0; i<HISTORY.Datas.length; i++) {%>
                       <tr>
                           <td id="ID_<%= i%>"><%= HISTORY.Datas[i].ID %></td>
-                          <td id="STATE_<%= i%>"><%= HISTORY.Datas[i].STATE %></td>
+                          <td><b><font color="<% if (HISTORY.Datas[i].STATE == 'SUCCESS' || HISTORY.Datas[i].STATE == 'SUCCESSED') { %>
+                            BLUE
+                            <% } else {%>
+                            RED
+                            <% } %>
+                            " > <div id="STATE_<%= i%>"><%= HISTORY.Datas[i].STATE %></div></font></b></td>
                           <td id="PRODUCT_ID_<%= i%>"><%= HISTORY.Datas[i].PRODUCT_ID %></td>
                           <td><input id="PRODUCT_NAME_<%= i%>" readonly value="<%= HISTORY.Datas[i].PRODUCT_NAME %>" /></td>
                           <td id="START_DATETIME_<%= i%>"><%= HISTORY.Datas[i].START_DATETIME %></td>
                           <td id="FILE_COUNT_<%= i%>"><%= HISTORY.Datas[i].FILE_COUNT %></td>
                           <td><input id="FILENAME_<%= i%>" readonly value="<%= HISTORY.Datas[i].FILENAME %>" /></td>
                           <div id="LOG_<%= i%>" style="visibility:hidden;height:0px" type="hidden" name="hide" value="egoing"> <%= HISTORY.Datas[i].LOGS %></div>
-                          <td><button type="button" onclick="myFunction(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
+                          <td><button type="button" onclick="myFunction(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>View</button></td>
                       </tr>
                       <% } %>
                   </tbody>
@@ -91,7 +100,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Schedule Histroy Detail</h4>
+          <h4 class="modal-title">Job History Log</h4>
         </div>
         <div class="modal-body">
             <form style="align:center">
@@ -102,8 +111,8 @@
                           <tr>
                               <th>No</th>
                               <th>Result</th>
-                              <th>Product ID</th>
-                              <th>Product Name</th>
+                              <th>Job ID</th>
+                              <th>Job Name</th>
                               <th>Start Time</th>
                               <th>File Count</th>
                           </tr>

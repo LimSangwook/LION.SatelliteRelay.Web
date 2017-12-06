@@ -10,7 +10,7 @@
       <form id="createFrom" name="createForm" >
         <div class="modal-body">
           <div class="form-group">
-<font color="red"><b>REQUIRED :</b></font>
+<font color="red"><b>Scheduling Information :</b></font>
             <font size="1">
               <table class="table table-sm">
                 <thead >
@@ -29,9 +29,9 @@
                 </tbody>
                 <thead >
                   <tr >
-                    <th style="width: 5%">SOURCEPATH </th>
-                    <th style="width: 5%">TARGETPATH </th>
-                    <th style="width: 5%">TARGETPATH TYPE </th>
+                    <th style="width: 5%">SOURCE PATH </th>
+                    <th style="width: 5%">TARGET PATH </th>
+                    <th style="width: 5%">TARGET PATH TYPE </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,10 +77,10 @@
                     <th style="width: 5%">COORD UL </th>
                     <th style="width: 5%">COORD LR </th>
                     <th style="width: 5%">REG DATE </th>
-                    <th style="width: 5%">PIXEL ROW </th>
-                    <th style="width: 5%">PIXEL_COL </th>
-                    <th style="width: 5%">DATA TYPE </th>
-                    <th style="width: 5%">DATA FORMAT </th>
+                    <th style="width: 5%">PIXEL ROW<font color="RED">(*)</font></th>
+                    <th style="width: 5%">PIXEL_COL<font color="RED">(*)</font></th>
+                    <th style="width: 5%">DATA TYPE<font color="RED">(*)</font></th>
+                    <th style="width: 5%">DATA FORMAT<font color="RED">(*)</font></th>
                     <th style="width: 5%">PROJECTION </th>
                   </tr>
                 </thead>
@@ -99,8 +99,8 @@
                 <thead>
                   <tr>
                     <th style="width: 5%">QUICK LOOK </th>
-                    <th style="width: 5%">DATA GBN </th>
-                    <th style="width: 5%">DATA AN GBN </th>
+                    <th style="width: 5%">DATA GBN<font color="RED">(*)</font></th>
+                    <th style="width: 5%">DATA AN GBN<font color="RED">(*)</font></th>
                     <th style="width: 5%">FILE STATUS </th>
                     <th style="width: 5%">MOUNT POINT </th>
                     <th style="width: 5%">DATA OPEN </th>
@@ -118,12 +118,13 @@
                 </tbody>
                 <thead>
                 </table>
+                  <font color="RED">(*) : Required Information</font>
               </font>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" data-dismiss="modal">Cancle</button>
-            <input type="button" value="Create" onclick="createFormSubmit()" />
+            <input type="button" value="Registration" onclick="createFormSubmit()" />
           </div>
         </form>
       </div>
@@ -143,7 +144,7 @@
     <form id="modifyFrom" name="modifyFrom" >
     <div class="modal-body">
             <div class="form-group">
-<font color="red"><b>REQUIRED :</b></font>
+<font color="red"><b>Scheduling Information :</b></font>
               <font size="1">
                 <table class="table table-sm">
                   <thead >
@@ -164,9 +165,9 @@
                   </tbody>
                   <thead >
                     <tr >
-                      <th style="width: 3%">SOURCEPATH </th>
-                      <th style="width: 3%">TARGETPATH </th>
-                      <th style="width: 3%">TARGETPATH_TYPE </th>
+                      <th style="width: 3%">SOURCE PATH </th>
+                      <th style="width: 3%">TARGET PATH </th>
+                      <th style="width: 3%">TARGET PATH_TYPE </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -213,10 +214,10 @@
                       <th style="width: 3%">COORD UL </th>
                       <th style="width: 3%">COORD LR </th>
                       <th style="width: 3%">REG DATE </th>
-                      <th style="width: 3%">PIXEL ROW </th>
-                      <th style="width: 3%">PIXEL COL </th>
-                      <th style="width: 3%">DATA TYPE </th>
-                      <th style="width: 3%">DATA FORMAT </th>
+                      <th style="width: 3%">PIXEL ROW<font color="RED">(*)</font></th>
+                      <th style="width: 3%">PIXEL COL<font color="RED">(*)</font></th>
+                      <th style="width: 3%">DATA TYPE<font color="RED">(*)</font></th>
+                      <th style="width: 3%">DATA FORMAT<font color="RED">(*)</font></th>
                       <th style="width: 3%">PROJECTION </th>
                     </tr>
                   </thead>
@@ -235,8 +236,8 @@
                   <thead>
                     <tr>
                       <th style="width: 3%">QUICK LOOK </th>
-                      <th style="width: 3%">DATA GBN </th>
-                      <th style="width: 3%">DATA AN GBN </th>
+                      <th style="width: 3%">DATA GBN<font color="RED">(*)</font></th>
+                      <th style="width: 3%">DATA AN GBN<font color="RED">(*)</font></th>
                       <th style="width: 3%">FILE STATUS </th>
                       <th style="width: 3%">MOUNT POINT </th>
                       <th style="width: 3%">DATA OPEN </th>
@@ -252,8 +253,8 @@
                       <td><input style="width:100%;height:32px" name="DATA_OPEN" id="Detail_DATA_OPEN"></td>
                     </tr>
                   </tbody>
-                  <thead>
                   </table>
+                  <font color="RED">(*) : Required Information</font>
               </font>
             </div>
     </div>

@@ -15,7 +15,7 @@
           <font size="4" face="Tahoma" > | Satellite Information</font>
         </div>
         <div class="col-4" style="text-align:right;">
-          <button type="button" data-toggle="modal" data-target="#createSatelliteModal"><font size="2">+Create</font></button>
+          <button type="button" data-toggle="modal" data-target="#createSatelliteModal"><font size="2">Registration</font></button>
         </div>
       </div>
       <div class="row" style="height=10px;background-color:#cccccc">
@@ -32,8 +32,8 @@
               <tr >
                 <th>ID</th>
                 <th>Satellite Name</th>
-                <th>Resolution</th>
-                <th>Detail</th>
+                <th>Resolution(km)</th>
+                <th>View</th>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@
                   <td id="ID_<%= i%>"><%= SATELLITE.Datas[i].ID %></td>
                   <td><input id="NAME_<%= i%>" readonly value="<%= SATELLITE.Datas[i].NAME %>" /></td>
                   <td><input id="RESOLUTION_<%= i%>" readonly value="<%= SATELLITE.Datas[i].RESOLUTION %>" /></td>
-                  <td><button type="button" onclick="callDetail(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>Detail</button></td>
+                  <td><button type="button" onclick="callDetail(<%= i%>)"><span class="glyphicon glyphicon-plus"></span>View</button></td>
                 </tr>
                 <% } %>
               </tbody>

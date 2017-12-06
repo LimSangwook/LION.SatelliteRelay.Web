@@ -15,7 +15,7 @@
               <font size="4" face="Tahoma" > | Scheduled Job List</font>
           </div>
           <div class="col-4" style="text-align:right;">
-            <button type="button" onclick="Create()"> <font size="2">+Create</font></button>
+            <button type="button" onclick="Create()"> <font size="2">Registration</font></button>
           </div>
       </div>
       <div class="row" style="height=10px;background-color:#cccccc">
@@ -37,7 +37,7 @@
                           <th>Filter REGEXP</th>
                           <th>Schedule Type</th>
                           <th>Schedule Time</th>
-                          <th>Detail</th>
+                          <th>View</th>
                           <th>Copy</th>
                       </tr>
                   </thead>
@@ -53,7 +53,7 @@
                         <td><input id="FILTER_REGEXP_<%= i%>" style="width:100%" readonly value="<%= PRODUCT.Datas[i].FILTER_REGEXP %>" /></td>
                         <td id="SCHEDULE_TYPE_<%= i%>"><%= PRODUCT.Datas[i].SCHEDULE_TYPE %></td>
                         <td id="SCHEDULE_TIME_<%= i%>"><%= PRODUCT.Datas[i].SCHEDULE_TIME %></td>
-                        <td><button type="button" onclick="callDetail(<%= i%>)">Detail</button></td>
+                        <td><button type="button" onclick="callDetail(<%= i%>)">View</button></td>
                         <td><button type="button" onclick="callCopy(<%= i%>)">Copy</button></td>
                         <div id="SATELLITE_ID_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].SATELLITE_ID %></div>
                         <div id="SOURCEPATH_<%= i%>" style="visibility:hidden;height:0px" ><%= PRODUCT.Datas[i].SOURCEPATH %></div>
